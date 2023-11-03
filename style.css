@@ -1,0 +1,253 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+header {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  background-image: url("assets/backgroundPetitsPlats.png");
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+body{
+    background-color:#EDEDED;;
+}
+
+h1 {
+  color: var(--Yellow, #ffd15b);
+  text-align: center;
+  font-family: Anton;
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.formHeader {
+    width: 80%;
+    display: flex;
+   height: 72px;
+    border-radius: 11px;
+background: #FFF;
+margin-left: 50px;
+  }
+
+  .inputHeader{
+    border: none;
+    flex: 1;
+    margin-left: 20px;
+  }
+
+  .seachButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 51px;
+height: 52px;
+flex-shrink: 0;
+border-radius: 10px;
+background: var(--Black, #1B1B1B);
+color: #FFF;
+display: flex;
+justify-content: center;
+border-radius: 10px;
+background: var(--Black, #1B1B1B);
+padding-top: 15px;
+margin-top: 10px;
+margin-right: 10px;
+
+  }
+  i{
+    text-align: center;
+  }
+  section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo{
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-bottom:100px;
+  }
+  .recipes-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-top: 30px;
+    object-fit: cover;
+   
+
+  }
+.recipes-cards article{
+    width: 380px;
+    height: 760px;
+  margin-bottom: 30px;
+  background-color: #FFF;
+  border-radius: 21px 21px 0 0;
+background: #FFF;
+box-shadow: 0px 4px 34px 30px rgba(0, 0, 0, 0.04);
+margin-top: 60px;
+
+}
+.recipes-cards article img{
+    width: 100%;
+height: 253px;
+flex-shrink: 0;
+object-fit: cover;
+border-radius: 21px 21px 0 0;
+}
+
+.recettes{
+    color: var(--Black, #1B1B1B);
+font-family: Manrope;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-left: 20px;
+margin-right: 20px;
+}
+
+main{
+    margin-top: 120px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #EDEDED;
+}
+.recipes-cards article h2{
+    color: #000;
+font-family: Anton;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-left: 20px;
+ margin-top: 10px;
+}
+.ingredients{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    color: var(--Black, #1B1B1B);
+    font-family: Manrope;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 0px;
+   
+}
+h3{
+    color: var(--Black, #1B1B1B);
+    font-family: Manrope;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+
+}
+.ingredients p{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+.dropdown{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: flex-start;
+    margin-left: 20px;
+
+}
+.dropdown form{
+    margin: 0%;
+    padding: 0%;
+    background-color: #fff;
+}
+.dropdown-button{
+    display: inline-flex;
+padding: 17px 16px;
+align-items: center;
+
+border-radius: 11px;
+background: #FFF;
+width: 163px;
+height: 22px;
+padding: 16px 17px 16px 17px;
+border: none;
+display: flex;
+justify-content:space-between;
+color: var(--Black, #1B1B1B);
+font-family: Manrope;
+font-size: 16px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+
+
+}
+.dropdown-content{
+    display: inline-flex;
+padding: 17px 18px;
+align-items: center;
+gap: 60px;
+
+background-color: #FFF;
+
+width: 129px;
+padding: 16px 17px 16px 17px;
+}
+.inputDropdown{
+    width: 90px;
+    margin: 0%;
+  
+}
+.seachChoix{
+    border-radius: 0%;
+
+}
+.dropdown form{
+    border-radius: 0%;
+}
+#select{
+    background-color: #fff;
+    width: 163px;
+    border-radius: 11px 11px;
+    margin-top: 25px;
+
+}
+.chevron {
+    font-size: 12px;
+    margin-left: 4px;
+    transition: transform 0.2s ease;
+  }
+ 
+  .choix{
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    gap: 30px;
+    margin-top: 40px;
+  }
+.dropdown-content{
+    display: none;
+}
+.rotate {
+    transform: rotate(180deg);
+    transition: transform 0.2s ease; /* Animation de la rotation */
+  }
+  .fas{
+    border: white;
+    text-decoration: none;
+  }
+ .fas::before{
+    border: none;}

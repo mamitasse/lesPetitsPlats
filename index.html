@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/db9c392b13.js"
+      crossorigin="anonymous"
+    ></script>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Raleway&family=Roboto:wght@400;500&family=Shrikhand&display=swap" rel="stylesheet">
+    <title>les petits plats></title>
+  </head>
+  <body>
+    <header>
+      <div class="logo"><img src="assets/logo.svg" alt="logo les petits plats" />
+      <img src="assets/logoicon.svg" alt="icon" /></div>
+     <section class="search"> 
+        <h1>
+        CHERCHEZ PARMI PLUS DE 1500 RECETTES <br> DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES
+      </h1>
+      <form class="formHeader" action="/mon-action-de-recherche" method="GET">
+        <input class="inputHeader" type="text" name="q" placeholder="Rechercher une recette, un ingrédient, ..." />
+        <button class="seachButton" type="submit">
+          <i class="fas fa-search"></i> <!-- Icône de loupe de Font Awesome -->
+        </button>
+        </form>
+    </section>
+    <main>   
+        <section class="choix">
+            <div class="dropdown" data-dropdown="ingredients">
+                <button class="dropdown-button" data-toggle="dropdown" data-dropdown-target="ingredients">
+                    Ingredients <i class="fa fa-chevron-down chevron"></i>
+                </button>
+                <div class="dropdown-content" data-dropdown-content="ingredients">
+                    <!-- Options pour les ingrédients -->
+                    <form action="mon-action-de-recherche" method="GET">
+                        <input class="inputDropdown" type="text" name="q" placeholder=" " />
+                        <button class="seachChoix" type="submit">
+                            <i class="fas fa-search"></i> 
+                        </button>
+                    </form>
+                    <ul class="ingredients-list"></ul>
+
+                </div>
+            </div>
+        
+            <div class="dropdown" data-dropdown="appareils">
+                <button class="dropdown-button" data-toggle="dropdown" data-dropdown-target="appareils">
+                    Appareils <i class="fa fa-chevron-down chevron"></i>
+                </button>
+                <div class="dropdown-content" data-dropdown-content="appareils">
+                    <!-- Options pour les appareils -->
+                    <form action="mon-action-de-recherche" method="GET">
+                        <input class="inputDropdown" type="text" name="q" placeholder=" " />
+                        <button class="seachChoix" type="submit">
+                            <i class="fas fa-search"></i> 
+                        </button>
+                    </form>
+                </div>
+            </div>
+        
+            <div class="dropdown" data-dropdown="ustensiles">
+                <button class="dropdown-button" data-toggle="dropdown" data-dropdown-target="ustensiles">
+                    Ustensiles <i class="fa fa-chevron-down chevron"></i>
+                </button>
+                <div class="dropdown-content" data-dropdown-content="ustensiles">
+                    <!-- Options pour les ustensiles -->
+                    <form action="mon-action-de-recherche" method="GET">
+                        <input class="inputDropdown" type="text" name="q" placeholder=" " />
+                        <button class="seachChoix" type="submit">
+                            <i class="fas fa-search"></i> 
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>  
+        <div class="recipes-cards"></div>
+    </main>
+   
+
+    <script src="data/recipes.js"></script>
+    <script src="script/model.js"></script>
+    <script src="script/view/pageSearchView.js"></script>
+    <script src="script/controllers.js"></script>
+    
+  </body>
+
+</html>
