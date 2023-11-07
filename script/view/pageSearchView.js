@@ -1,24 +1,24 @@
 class ListRecipesView {
   constructor() {
-  
     this.inputHeader = document.querySelector(".inputHeader");
     this.searchButton = document.querySelector(".searchButton");
-    
     const searchForm = document.querySelector(".formHeader");
+    const hour = document.querySelector(".temps");
+
+    //ecouteur d'evenement submit
     searchForm.addEventListener("submit", (e) => {
       e.preventDefault(); // Empêche le rechargement de la page
       const query = this.inputHeader.value;
-     
     });
 
-      // Écoute de l'événement de recherche
-  const searchButton = document.querySelector(".searchButton");
-  const inputHeader = document.querySelector(".inputHeader");
-  
-  searchButton.addEventListener("click", () => {
-    const query = inputHeader.value;
-    controller.handleSearch(query);
-  });
+    // Écoute de l'événement de recherche
+    const searchButton = document.querySelector(".searchButton");
+    const inputHeader = document.querySelector(".inputHeader");
+
+    searchButton.addEventListener("click", () => {
+      const query = inputHeader.value;
+      controller.handleSearch(query);
+    });
   }
 
   // Je crée une fonction pour afficher les recettes
@@ -32,9 +32,11 @@ class ListRecipesView {
         recipeElement.classList.add("recipe");
 
         recipeElement.innerHTML = `
-            <img src="assets/photos_les_petits_plats/${
-              recipe.image
-            }" alt="recette ${recipe.id}" />
+        <div class="time">${recipe.time}min</div>
+         <img src="assets/photos_les_petits_plats/${
+           recipe.image
+         }" alt="recette ${recipe.id}" />
+            
             <h2>${recipe.name}</h2>
             <h3>RECETTE</h3>
             <p class="recettes">${recipe.description}</p>
@@ -68,9 +70,10 @@ class ListRecipesView {
         recipeElement.classList.add("recipe");
 
         recipeElement.innerHTML = `
-            <img src="assets/photos_les_petits_plats/${
-              recipe.image
-            }" alt="recette ${recipe.id}" />
+        <div class="time">${recipe.time}min</div>
+        <img src="assets/photos_les_petits_plats/${
+          recipe.image
+        }" alt="recette ${recipe.id}" />
             <h2>${recipe.name}</h2>
             <h3>RECETTE</h3>
             <p class="recettes">${recipe.description}</p>

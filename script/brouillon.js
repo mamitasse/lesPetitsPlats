@@ -1,20 +1,23 @@
-//fonction pour filtrer la recherche des recettes
-function filterRecipes(recipes, query) {
-    // Convertir en minuscules pour traiter les majuscules et minuscules de la même manière
-    query = query.toLowerCase();
+removeAccents(text) {
+    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
+  
+  // Fonction pour filtrer les recettes
+filterRecipes(recipes, query) {
+    query = removeAccents(query).toLowerCase();
     return recipes.filter((recipe) => {
-        const ingredients = recipe.ingredients.map((ingredient) => ingredient.ingredient.toLowerCase());
-        const ustensils = recipe.ustensils.map((ustensil) => ustensil.toLowerCase());
-        const appliance = recipe.appliance.toLowerCase();
-
-        return (
-            recipe.name.toLowerCase().startsWith(query) ||
-            ingredients.some((ingredient) => ingredient.startsWith(query)) ||
-            ustensils.some((ustensil) => ustensil.startsWith(query)) ||
-            appliance.startsWith(query)
-        );
+      const ingredients = recipe.ingredients.map((ingredient) => removeAccents(ingredient.ingredient).toLowerCase());
+      const ustensils = recipe.ustensils.map((ustensil) => removeAccents(ustensil).toLowerCase());
+      const appliance = removeAccents(recipe.appliance).toLowerCase();
+  
+      return (
+        removeAccents(recipe.name).toLowerCase().includes(query) ||
+        ingredients.some((ingredient) => ingredient.includes(query)) ||
+        ustensils.some((ustensil) => ustensil.includes(query)) ||
+        appliance.includes(query)
+      );
     });
-}
+  }
 // Gestionnaire d'événements pour le formulaire de recherche
 const searchForm = document.querySelector(".formHeader");
 searchForm.addEventListener("submit", (event) => {
