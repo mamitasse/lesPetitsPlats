@@ -37,12 +37,15 @@
                 <div class="dropdown-content" data-dropdown-content="ingredients">
                     <!-- Options pour les ingrédients -->
                     <form method="GET">
-                        <input  title="entrer de la recherche par ingredients" class="inputDropdown" type="text" name="q" placeholder=" " />
-                        <button title="lancer la recherche" class="seachChoix" type="submit">
+                        <input  title="entrer de la recherche par ingredients" class="inputDropdown" type="text" name="ingredients" placeholder=" " />
+                        <button title="lancer la recherche" class="searchChoix" type="submit">
                             <i class="fas fa-search"></i> 
                         </button>
                     </form>
-                    <ul class="ingredients-list"></ul>
+                    <div class="selected-ingredients-container">
+                        <ul></ul>
+                    </div>
+                    <ul id="ingredients-list"></ul>
 
                 </div>
             </div>
@@ -54,11 +57,15 @@
                 <div class="dropdown-content" data-dropdown-content="appareils">
                     <!-- Options pour les appareils -->
                     <form method="GET">
-                        <input title="entrer de la recherche par appareils" class="inputDropdown" type="text" name="q" placeholder=" " />
-                        <button title="lancer la recherche" class="seachChoix" type="submit">
+                        <input title="entrer de la recherche par appareils" class="inputDropdown" type="text" name="appareils" placeholder=" " />
+                        <button title="lancer la recherche" class="searchChoix" type="submit">
                             <i class="fas fa-search"></i> 
                         </button>
                     </form>
+                    <div class="selected-appareils-container">
+                        <ul></ul>
+                    </div>
+                    <ul id="appareils-list"></ul>
                 </div>
             </div>
         
@@ -69,11 +76,19 @@
                 <div class="dropdown-content" data-dropdown-content="ustensiles">
                     <!-- Options pour les ustensiles -->
                     <form method="GET">
-                        <input title="entrer de la recherche par ustensiles" class="inputDropdown" type="text"  />
-                        <button title="lancer la recherche" class="seachChoix" type="submit">
+                        <input title="entrer de la recherche par ustensiles" class="inputDropdown" type="text" name="ustensiles"  />
+                        <button title="lancer la recherche" class="searchChoix" type="submit">
                             <i class="fas fa-search"></i> 
                         </button>
                     </form>
+                    <!-- Ajoutez ceci dans votre fichier HTML où vous souhaitez afficher les indicateurs de filtre -->
+                    
+                    <div class="selected-ustensiles-container">
+                        <ul></ul>
+                    </div>
+                    
+                    <ul id="ustensiles-list"></ul>
+
                 </div>
             </div>
         </section>  
@@ -82,11 +97,11 @@
    
 
     <script src="data/recipes.js"></script>
-    <script src="script/model.js"></script>
-    <script src="script/view/pageSearchView.js"></script>
-    <script src="script/controllers.js"></script>
+    <script src="model/recipe.js"></script>
+    <script src="views/listRecipesViews.js"></script>
+    <script  src="controllers/controllers.js"></script>
 
   
   </body>
 
-</html>
+</html>   

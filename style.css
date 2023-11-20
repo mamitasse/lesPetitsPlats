@@ -111,6 +111,7 @@ font-weight: 400;
 line-height: normal;
 margin-left: 20px;
 margin-right: 20px;
+
 }
 
 main{
@@ -162,6 +163,7 @@ h3{
     margin-left: 20px;
 }
 .dropdown{
+
     display: flex;
     flex-direction: column;
     align-items: baseline;
@@ -181,7 +183,7 @@ align-items: center;
 
 border-radius: 11px;
 background: #FFF;
-width: 163px;
+width: 195px;
 height: 22px;
 padding: 16px 17px 16px 17px;
 border: none;
@@ -204,11 +206,11 @@ gap: 60px;
 
 background-color: #FFF;
 
-width: 129px;
-padding: 16px 17px 16px 17px;
+width: 164px;
+
 }
 .inputDropdown{
-    width: 90px;
+    width: 120px;
     margin: 0%;
   
 }
@@ -233,6 +235,7 @@ padding: 16px 17px 16px 17px;
   }
  
   .choix{
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content:flex-start;
@@ -269,3 +272,55 @@ top: 14px;
 right: 14px;
 position: absolute;
     }
+    .dropdown li{
+      color: var(--Black, #1B1B1B);
+font-family: Manrope;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+list-style-type: none;
+    }
+    .dropdown {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: baseline;
+      justify-content: flex-start;
+      position: relative; /* Ajoutez cette ligne pour que le dropdown soit relatif à son conteneur */
+    }
+    
+    .dropdown-content {
+      display: none;
+      position: absolute; /* Ajoutez cette ligne pour que le dropdown soit en position absolue */
+      z-index: 1; /* Ajoutez cette ligne pour s'assurer que le dropdown est affiché au-dessus du contenu */
+      background-color: #FFF;
+      width: 159px;
+    
+      margin-top: 25px;
+    }
+    .dropdown-button {
+      outline: none; /* Ajoutez cette ligne pour supprimer la bordure */
+      /* Le reste de vos styles pour le bouton */
+    }
+      
+    li:hover{
+      color: red;
+    }
+    .selected{
+      background-color: red;
+    }
+    
+.selected-ingredients-container ul li {
+    color:black;
+    background-color: #FFD15B;
+}
+.selected-ustensiles-container ul li {
+    color:black;
+    background-color: #FFD15B;
+}
+.selected-appareils-container ul li {
+    color:black;
+    background-color: #FFD15B;
+}
+
+    
