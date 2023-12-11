@@ -1,6 +1,6 @@
-*{
-    margin: 0%;
-    padding: 0%;
+* {
+  margin: 0%;
+  padding: 0%;
 }
 header {
   width: 100%;
@@ -11,8 +11,8 @@ header {
   object-fit: cover;
   margin-bottom: 20px;
 }
-body{
-    background-color:#EDEDED;;
+body {
+  background-color: #ededed;
 }
 
 h1 {
@@ -25,302 +25,412 @@ h1 {
   line-height: normal;
 }
 .formHeader {
-    width: 80%;
-    display: flex;
-   height: 72px;
-    border-radius: 11px;
-background: #FFF;
-margin-left: 50px;
-  }
+  width: 80%;
+  display: flex;
+  height: 72px;
+  border-radius: 11px;
+  background: #fff;
+  margin-left: 50px;
+}
 
-  .inputHeader{
-    border: none;
-    flex: 1;
-    margin-left: 20px;
-  }
+.inputHeader {
+  border: none;
+  flex: 1;
+  margin-left: 20px;
+}
 
-  .searchButton {
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 51px;
-height: 52px;
-flex-shrink: 0;
-border-radius: 10px;
-background: var(--Black, #1B1B1B);
-color: #FFF;
-display: flex;
-justify-content: center;
-border-radius: 10px;
-background: var(--Black, #1B1B1B);
-padding-top: 15px;
-margin-top: 10px;
-margin-right: 10px;
+.searchButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 51px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--Black, #1b1b1b);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--Black, #1b1b1b);
+  padding-top: 15px;
+  margin-top: 10px;
+  margin-right: 10px;
+ 
+}
+.formHeader .fas{
+  font-size: 25px;
+}
 
-  }
-  i{
-    text-align: center;
-  }
-  section{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .logo{
-    margin-top: 30px;
-    margin-left: 20px;
-    margin-bottom:100px;
-  }
-  .recipes-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    width: 100%;
-    margin-top: 30px;
-    object-fit: cover;
-   
+i {
+  text-align: center;
 
-  }
-.recipes-cards article{
-    width: 380px;
-    height: 760px;
+}
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.logo {
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-bottom: 100px;
+}
+.recipes-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  margin-top: 30px;
+  object-fit: cover;
+}
+.recipes-cards article {
+  width: 380px;
+  height: 760px;
   margin-bottom: 30px;
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 21px 21px 0 0;
-background: #FFF;
-box-shadow: 0px 4px 34px 30px rgba(0, 0, 0, 0.04);
-margin-top: 60px;
-position: relative;
-
+  background: #fff;
+  box-shadow: 0px 4px 34px 30px rgba(0, 0, 0, 0.04);
+  margin-top: 60px;
+  position: relative;
 }
-.recipes-cards article img{
-    width: 100%;
-height: 253px;
-flex-shrink: 0;
-object-fit: cover;
-border-radius: 21px 21px 0 0;
-}
-
-.recettes{
-    color: var(--Black, #1B1B1B);
-font-family: Manrope;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-margin-left: 20px;
-margin-right: 20px;
-
+.recipes-cards article img {
+  width: 100%;
+  height: 253px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 21px 21px 0 0;
 }
 
-main{
-    margin-top: 120px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: #EDEDED;
+.recettes {
+  color: var(--Black, #1b1b1b);
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 20px;
+  margin-right: 20px;
 }
-.recipes-cards article h2{
-    color: #000;
-font-family: Anton;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-margin-left: 20px;
- margin-top: 10px;
-}
-.ingredients{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    color: var(--Black, #1B1B1B);
-    font-family: Manrope;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-top: 0px;
-   
-}
-h3{
-    color: var(--Black, #1B1B1B);
-    font-family: Manrope;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    margin-top: 20px;
-    margin-bottom: 5px;
-    margin-left: 20px;
 
+.faHeader {
+  font-size: 40px;
 }
-.ingredients p{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 20px;
+main {
+  margin-top: 120px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #ededed;
 }
-.dropdown{
-
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-    justify-content: flex-start;
-    margin-left: 20px;
-
+.recipes-cards article h2 {
+  color: #000;
+  font-family: Anton;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 20px;
+  margin-top: 10px;
 }
-.dropdown form{
-    margin: 0%;
-    padding: 0%;
-    background-color: #fff;
+.ingredients {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  color: var(--Black, #1b1b1b);
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 0px;
 }
-.dropdown-button{
-    display: inline-flex;
-padding: 17px 16px;
-align-items: center;
-
-border-radius: 11px;
-background: #FFF;
-width: 195px;
-height: 22px;
-padding: 16px 17px 16px 17px;
-border: none;
-display: flex;
-justify-content:space-between;
-color: var(--Black, #1B1B1B);
-font-family: Manrope;
-font-size: 16px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
-
-
+h3 {
+  color: var(--Black, #1b1b1b);
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  margin-left: 20px;
 }
-.dropdown-content{
-    display: inline-flex;
-padding: 17px 18px;
-align-items: center;
-gap: 60px;
-
-background-color: #FFF;
-
-width: 164px;
-
+.ingredients p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
 }
-.inputDropdown{
-    width: 120px;
-    margin: 0%;
-  
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: flex-start;
+  margin-left: 20px;
 }
-.seachChoix{
-    border-radius: 0%;
+.dropdown form {
+  margin: 0%;
+  padding: 0%;
+  background-color: #fff;
+}
+.dropdown-button {
+  display: inline-flex;
+  padding: 17px 16px;
+  align-items: center;
 
+  border-radius: 11px;
+  background: #fff;
+  width: 195px;
+  height: 22px;
+  padding: 16px 17px 16px 17px;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  color: var(--Black, #1b1b1b);
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
-.dropdown form{
-    border-radius: 0%;
-}
-#select{
-    background-color: #fff;
-    width: 163px;
-    border-radius: 11px 11px;
-    margin-top: 25px;
+.dropdown-content {
+  display: inline-flex;
+  padding: 17px 18px;
+  align-items: center;
+  gap: 60px;
 
+  background-color: #fff;
+
+  width: 164px;
+}
+.inputDropdown {
+  width: 120px;
+  margin: 0%;
+}
+.seachChoix {
+  border-radius: 0%;
+}
+.dropdown form {
+  border-radius: 0%;
+}
+#select {
+  background-color: #fff;
+  width: 163px;
+  border-radius: 11px 11px;
+  margin-top: 25px;
 }
 .chevron {
-    font-size: 12px;
-    margin-left: 4px;
-    transition: transform 0.2s ease;
-  }
- 
-  .choix{
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content:flex-start;
-    gap: 30px;
-    margin-top: 40px;
-  }
-.dropdown-content{
-    display: none;
-}
-.rotate {
-    transform: rotate(180deg);
-    transition: transform 0.2s ease; /* Animation de la rotation */
-  }
-  .fas{
-    border: white;
-    text-decoration: none;
-  }
- .fas::before{
-    border: none;}
-    .time{
-        color: var(--Black, #1B1B1B);
-text-align: center;
-font-family: Manrope;
-font-size: 12px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-border-radius: 14px;
-background: var(--Yellow, #FFD15B);
-width: 35px;
-height: 16px;
-padding: 5px 15px;
-top: 14px;
-right: 14px;
-position: absolute;
-    }
-    .dropdown li{
-      color: var(--Black, #1B1B1B);
-font-family: Manrope;
-font-size: 14px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-list-style-type: none;
-    }
-    .dropdown {
-      display: inline-flex;
-      flex-direction: column;
-      align-items: baseline;
-      justify-content: flex-start;
-      position: relative; /* Ajoutez cette ligne pour que le dropdown soit relatif à son conteneur */
-    }
-    
-    .dropdown-content {
-      display: none;
-      position: absolute; /* Ajoutez cette ligne pour que le dropdown soit en position absolue */
-      z-index: 1; /* Ajoutez cette ligne pour s'assurer que le dropdown est affiché au-dessus du contenu */
-      background-color: #FFF;
-      width: 159px;
-    
-      margin-top: 25px;
-    }
-    .dropdown-button {
-      outline: none; /* Ajoutez cette ligne pour supprimer la bordure */
-      /* Le reste de vos styles pour le bouton */
-    }
-      
-    li:hover{
-      color: red;
-    }
-    .selected{
-      background-color: red;
-    }
-    
-.selected-ingredients-container ul li {
-    color:black;
-    background-color: #FFD15B;
-}
-.selected-ustensiles-container ul li {
-    color:black;
-    background-color: #FFD15B;
-}
-.selected-appareils-container ul li {
-    color:black;
-    background-color: #FFD15B;
+  font-size: 12px;
+  margin-left: 4px;
+  transition: transform 0.2s ease;
 }
 
-    
+.choix {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 30px;
+  margin-top: 40px;
+}
+.dropdown-content {
+  display: none;
+}
+.rotate {
+  transform: rotate(180deg);
+  transition: transform 0.2s ease; /* Animation de la rotation */
+}
+.fas {
+  border: none;
+  text-decoration: none;
+}
+.fas::before {
+  border: none;
+}
+.time {
+  color: var(--Black, #1b1b1b);
+  text-align: center;
+  font-family: Manrope;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border-radius: 14px;
+  background: var(--Yellow, #ffd15b);
+  width: 35px;
+  height: 16px;
+  padding: 5px 15px;
+  top: 14px;
+  right: 14px;
+  position: absolute;
+}
+.dropdown li {
+  color: var(--Black, #1b1b1b);
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  list-style-type: none;
+}
+.dropdown {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: flex-start;
+  position: relative; /* Ajoutez cette ligne pour que le dropdown soit relatif à son conteneur */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute; /* Ajoutez cette ligne pour que le dropdown soit en position absolue */
+  z-index: 1; /* Ajoutez cette ligne pour s'assurer que le dropdown est affiché au-dessus du contenu */
+  background-color: #fff;
+  width: 159px;
+
+  margin-top: 25px;
+}
+
+li:hover {
+  color: red;
+}
+.selected {
+  background-color: red;
+}
+
+.selected-ingredients-container ul li {
+  color: black;
+  background-color: #ffd15b;
+}
+.selected-ustensiles-container ul li {
+  color: black;
+  background-color: #ffd15b;
+}
+.selected-appareils-container ul li {
+  color: black;
+  background-color: #ffd15b;
+}
+.formDrop {
+  display: flex;
+  flex-direction: row;
+}
+
+.clear-input-icon {
+  margin-left: -40px;
+  font-size: 15px;
+  margin-top: 4px;
+  font-weight: 200;
+}
+.dropdown .fas {
+  font-weight: 600;
+
+  font-size: 15px;
+  margin-top: 0%;
+}
+.dropdown button {
+  border: none;
+  background: none;
+  
+}
+.dropdown .fa-search {
+  background: none;
+}
+.choix {
+  position: relative;
+}
+
+.formDrop {
+  position: relative;
+  display: inline-block;
+}
+
+.inputDropdown {
+  padding-right: 35px; /* Ajoutez un espace pour les icônes à droite */
+}
+
+.clear-input-icon,
+.searchChoix {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.clear-input-icon {
+  right: 30px; /* Ajustez la position de l'icône de suppression */
+  top: 10px;
+}
+
+.searchChoix {
+  right: 0;
+  padding: 6px;
+}
+.recipesCounter{
+  color: var(--Black, #1B1B1B);
+font-family: Anton;
+font-size: 21px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+margin-left: 80px;
+
+}
+
+.selected-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-radius: 10px;
+background: #FFD15B;
+margin-top: 3px;
+position: static;
+}
+.selectedItems{
+  position: static;
+}
+
+.remove-button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  color: red; /* Couleur au survol, ajustez selon vos préférences */
+}
+.choix {
+  position: relative;
+}
+
+.dropdown {
+  position: relative;
+  /* Vos styles pour le dropdown */
+}
+
+.selected-items-container {
+  position: fixed;
+  top: calc(100% + 5px); /* Placez-le juste en dessous du dropdown avec un espace de 5px */
+  left: 0;
+  z-index: 1000; /* Assurez-vous que cela est au-dessus des autres éléments si nécessaire */
+  background-color: #fff; /* Ajoutez d'autres styles selon vos préférences */
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: block;
+}
+
+.selected-ustensil-container {
+  display: block;
+  /* Styles pour chaque élément sélectionné */
+  position: fixed;
+}
+.choix{
+  position:relative;
+}
+.dropdown input{
+  margin-bottom: 5px;
+}

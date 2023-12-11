@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Raleway&family=Roboto:wght@400;500&family=Shrikhand&display=swap" rel="stylesheet">
-    <title>les petits plats></title>
+    <title>les petits plats</title>
   </head>
   <body>
     <header>
@@ -24,11 +24,12 @@
       <form class="formHeader"  method="GET">
         <input class="inputHeader" type="text" name="q" placeholder="Rechercher une recette, un ingrédient, ..." />
         <button title="lancer la recherche" class="searchButton" type="submit" >
-          <i class="fas fa-search"></i> <!-- Icône de loupe de Font Awesome -->
+          <i class="fas fa-search faHeader"></i> <!-- Icône de loupe de Font Awesome -->
         </button>
         </form>
     </section>
-    <main>   
+    <main>  
+         
         <section class="choix">
             <div class="dropdown" data-dropdown="ingredients">
                 <button class="dropdown-button" data-toggle="dropdown" data-dropdown-target="ingredients">
@@ -36,16 +37,18 @@
                 </button>
                 <div class="dropdown-content" data-dropdown-content="ingredients">
                     <!-- Options pour les ingrédients -->
-                    <form method="GET">
-                        <input  title="entrer de la recherche par ingredients" class="inputDropdown" type="text" name="ingredients" placeholder=" " />
+                    <form  class='formDrop' method="GET">
+                    <input  title="entrer de la recherche par ingredients" class="inputDropdown" type="text" name="ingredients" placeholder=" " />
+                        <div class="clear-input-icon" id="clear-input-icon">&#10006;</div>
+                        
                         <button title="lancer la recherche" class="searchChoix" type="submit">
                             <i class="fas fa-search"></i> 
                         </button>
                     </form>
-                    <div class="selected-ingredients-container">
+                    <div class="selected-ingredients-container selectedItems">
                         <ul></ul>
                     </div>
-                    <ul id="ingredients-list"></ul>
+                    <ul class="dropdown-list" id="ingredients-list"></ul>
 
                 </div>
             </div>
@@ -56,16 +59,17 @@
                 </button>
                 <div class="dropdown-content" data-dropdown-content="appareils">
                     <!-- Options pour les appareils -->
-                    <form method="GET">
+                    <form  class='formDrop' method="GET">
                         <input title="entrer de la recherche par appareils" class="inputDropdown" type="text" name="appareils" placeholder=" " />
+                        <div class="clear-input-icon" id="clear-input-icon">&#10006;</div>
                         <button title="lancer la recherche" class="searchChoix" type="submit">
                             <i class="fas fa-search"></i> 
                         </button>
                     </form>
-                    <div class="selected-appareils-container">
+                    <div class="selected-appareils-container selectedItems">
                         <ul></ul>
                     </div>
-                    <ul id="appareils-list"></ul>
+                    <ul class="dropdown-list" id="appareils-list"></ul>
                 </div>
             </div>
         
@@ -73,31 +77,37 @@
                 <button class="dropdown-button" data-toggle="dropdown" data-dropdown-target="ustensiles">
                     Ustensiles <i class="fa fa-chevron-down chevron"></i>
                 </button>
+
+              
+                
                 <div class="dropdown-content" data-dropdown-content="ustensiles">
                     <!-- Options pour les ustensiles -->
-                    <form method="GET">
+                    <form  class='formDrop' method="GET">
                         <input title="entrer de la recherche par ustensiles" class="inputDropdown" type="text" name="ustensiles"  />
+                        
+                        <div class="clear-input-icon" id="clear-input-icon">&#10006;</div>
                         <button title="lancer la recherche" class="searchChoix" type="submit">
                             <i class="fas fa-search"></i> 
                         </button>
                     </form>
-                    <!-- Ajoutez ceci dans votre fichier HTML où vous souhaitez afficher les indicateurs de filtre -->
-                    
-                    <div class="selected-ustensiles-container">
+                   
+                    <div class="selected-ustensiles-container selectedItems">
                         <ul></ul>
                     </div>
-                    
-                    <ul id="ustensiles-list"></ul>
+                
+                    <ul class="dropdown-list" id="ustensiles-list"></ul>
 
                 </div>
             </div>
+          
+            <div class="recipesCounter"></div>
         </section>  
         <div class="recipes-cards"></div>
     </main>
    
 
     <script src="data/recipes.js"></script>
-    <script src="model/recipe.js"></script>
+    <script src="model/model.js"></script>
     <script src="views/listRecipesViews.js"></script>
     <script  src="controllers/controllers.js"></script>
 

@@ -3,13 +3,19 @@ class ListRecipesView {
     // Sélection des éléments du DOM
     this.inputHeader = document.querySelector(".inputHeader");
     this.searchButton = document.querySelector(".searchButton");
-   this.searchButtonDropdown = document.querySelector(".searchChoix");
+    this.searchButtonDropdowns = document.querySelectorAll(".searchChoix");
 
-   
     // Assurez-vous que la méthode updateRecipesDisplay est correctement liée à l'instance actuelle
     this.updateRecipesDisplay = this.updateRecipesDisplay.bind(this);
     // Ajout des propriétés pour suivre les éléments sélectionnés
     this.selectedItems = {
+      ingredients: [],
+      appareils: [],
+      ustensiles: [],
+    };
+
+    // Ajout de la propriété uniqueItems
+    this.uniqueItems = {
       ingredients: [],
       appareils: [],
       ustensiles: [],
@@ -21,51 +27,59 @@ class ListRecipesView {
       controller.handleSearch(query);
     });
 
-document.querySelectorAll(".searchChoix").forEach((button) => {
+    this.searchButtonDropdowns.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault();
 
-  button.addEventListener("click", (e) => {
-    e.preventDefault();
+        // Utilisation des éléments sélectionnés dans les dropdowns pour filtrer les recettes
+        const selectedIngredients = this.getSelectedItems("ingredients");
+        const selectedAppareils = this.getSelectedItems("appareils");
+        const selectedUstensiles = this.getSelectedItems("ustensiles");
 
-    // Utilisation des éléments sélectionnés dans les dropdowns pour filtrer les recettes
-    const selectedIngredients = this.getSelectedItems("ingredients");
-    const selectedAppareils = this.getSelectedItems("appareils");
-    const selectedUstensiles = this.getSelectedItems("ustensiles");
+        console.log(selectedUstensiles);
+        console.log(selectedAppareils);
+        console.log(selectedIngredients);
 
-    console.log(selectedUstensiles);
-    console.log(selectedAppareils);
-    console.log(selectedIngredients);
+        // Filtrage des recettes en fonction des éléments sélectionnés
+        // Filtrage des recettes en fonction des éléments sélectionnés
+        const filteredRecipes = controller.filterRecipes(
+          selectedIngredients,
+          selectedAppareils,
+          selectedUstensiles
+        );
 
-    // Filtrage des recettes en fonction des éléments sélectionnés
- // Filtrage des recettes en fonction des éléments sélectionnés
-const filteredRecipes = controller.filterRecipes(
-  selectedIngredients,
-  selectedAppareils,
-  selectedUstensiles
-);
+        console.log("Filtered Recipes:", filteredRecipes);
 
-console.log("Controller Filtered By Search:", controller.filteredBySearch);
-console.log("Filtered Recipes:", filteredRecipes);
+        // Si des filtres de recherche sont appliqués, effectuez l'intersection
+        let finalFilteredRecipes;
 
-// Si des filtres de recherche sont appliqués, effectuez l'intersection
-let finalFilteredRecipes;
+        if (controller.filteredBySearch.length > 0) {
+          console.log(
+            "Controller Filtered By Search:",
+            controller.filteredBySearch
+          );
+          finalFilteredRecipes = controller.filteredBySearch.filter(
+            (recipeBySearch) =>
+              filteredRecipes.some((recipe) => recipe.id === recipeBySearch.id)
+          );
+        } else {
+          // Sinon, utilisez les recettes filtrées directement
+          finalFilteredRecipes = filteredRecipes;
+        }
 
-if (controller.filteredBySearch.length > 0) {
-  finalFilteredRecipes = controller.filteredBySearch.filter((recipeBySearch) =>
-    filteredRecipes.some((recipe) => recipe.id === recipeBySearch.id)
-);
-} else {
-  // Sinon, utilisez les recettes filtrées directement
-  finalFilteredRecipes = filteredRecipes;
-}
+        // Mise à jour de l'affichage des recettes avec le résultat filtré
+        // Utilisez directement updateRecipesDisplay, pas this.view.updateRecipesDisplay
+        this.updateRecipesDisplay({ recipes: finalFilteredRecipes });
+      });
 
-// Mise à jour de l'affichage des recettes avec le résultat filtré
-// Utilisez directement updateRecipesDisplay, pas this.view.updateRecipesDisplay
-this.updateRecipesDisplay({ recipes: finalFilteredRecipes });
-  });
+      // Appel de la fonction pour ajouter les gestionnaires d'événements aux inputs
+      this.addInputEventListeners();
+    });
+  }
 
-  // Appel de la fonction pour ajouter les gestionnaires d'événements aux inputs
-  this.addInputEventListeners();
-});
+  updateRecipesCounter(count) {
+    const recipesCounter = document.querySelector(".recipesCounter");
+    recipesCounter.textContent = `${count} recette${count !== 1 ? "s" : ""}`;
   }
 
   handleFilteredSelection(type, selectedItem) {
@@ -85,10 +99,13 @@ this.updateRecipesDisplay({ recipes: finalFilteredRecipes });
 
   // Nouvelle méthode pour mettre à jour les listes déroulantes
   updateDropdowns(uniqueItems, type) {
+    console.log(uniqueItems, type);
     const listElement = document.getElementById(`${type}-list`);
     const selectedItemsContainer = document.getElementById(`selected-${type}`);
 
     if (listElement) {
+      console.log(listElement);
+      console.log(uniqueItems[type]);
       // Mise à jour des options dans la liste déroulante
       listElement.innerHTML = uniqueItems[type]
         ? uniqueItems[type].map((item) => `<li>${item}</li>`).join("")
@@ -112,27 +129,25 @@ this.updateRecipesDisplay({ recipes: finalFilteredRecipes });
 
           // Mise à jour de la liste des éléments sélectionnés
           this.updateSelectedItems(type);
-
-          // Mise à jour de la liste déroulante après l'ajout d'un nouvel élément
-          this.updateDropdowns(uniqueItems, type);
         }
       });
     });
 
-// Ajoutez ici le code pour gérer la soumission du formulaire
-const formElement = document.querySelector(`[name="${type}"] form`);
-if (formElement) {
-  formElement.addEventListener("submit", (event) => {
-    event.preventDefault();
-    this.handleFormSubmission(type);
-  });
-}
-
+    // Ajoutez ici le code pour gérer la soumission du formulaire
+    const formElement = document.querySelector(`[name="${type}"] form`);
+    if (formElement) {
+      formElement.addEventListener("submit", (event) => {
+        event.preventDefault();
+        this.handleFormSubmission(type);
+      });
+    }
   }
 
   // Méthode pour mettre à jour les éléments sélectionnés
   updateSelectedItems(type) {
-    const selectedItemsContainer = document.querySelector(`.selected-${type}-container ul`);
+    const selectedItemsContainer = document.querySelector(
+      `.selected-${type}-container ul`
+    );
 
     if (selectedItemsContainer) {
       // Effacement du contenu précédent
@@ -174,47 +189,60 @@ if (formElement) {
     this.updateSelectedItems(type);
   }
 
-// Méthode pour supprimer un élément sélectionné
-removeSelectedItem(type, item) {
-  const index = this.selectedItems[type].indexOf(item);
+  // Méthode pour supprimer un élément sélectionné
+  removeSelectedItem(type, item) {
+    const index = this.selectedItems[type].indexOf(item);
 
-  if (index !== -1) {
-    // Restaurez l'élément à sa liste d'origine
-    uniqueItems[type].push(item);
+    if (index !== -1) {
+      // Restaurez l'élément à sa liste d'origine
+      uniqueItems[type].push(item);
 
-    // Suppression de l'élément de la liste sélectionnée
-    this.selectedItems[type].splice(index, 1);
+      // Suppression de l'élément de la liste sélectionnée
+      this.selectedItems[type].splice(index, 1);
 
-    // Mise à jour de l'affichage des éléments sélectionnés
-    this.updateSelectedItems(type);
+      // Mise à jour de l'affichage des éléments sélectionnés
+      this.updateSelectedItems(type);
 
-    // Mise à jour de la liste déroulante après la suppression d'un élément
-    this.updateDropdowns(uniqueItems, type);
+      // Mise à jour de la liste déroulante après la suppression d'un élément
+      this.updateDropdowns(uniqueItems, type);
+
+      // Appel de la méthode du contrôleur pour gérer le filtrage supplémentaire
+      controller.handleAdditionalFiltering(); // Assurez-vous que "controller" est bien défini
+    }
   }
-}
-
-  
 
   addInputEventListeners() {
     const inputElements = document.querySelectorAll(".inputDropdown");
-  
+
     inputElements.forEach((input) => {
+      const clearInputIcon = input.nextElementSibling; // Sélectionnez la croix
+
+      // Masquez la croix lors de l'initialisation
+      clearInputIcon.style.display = "none";
+
       input.addEventListener("input", (event) => {
         event.preventDefault();
-  
+
         const type = input.getAttribute("name");
         const value = event.target.value.toLowerCase();
         const listElement = document.getElementById(`${type}-list`);
-  
+
+        // Affichez ou masquez la croix en fonction du contenu de l'input
+        if (value.trim() === "") {
+          clearInputIcon.style.display = "none";
+        } else {
+          clearInputIcon.style.display = "block";
+        }
+
         if (uniqueItems && uniqueItems[type]) {
           const filteredOptions = uniqueItems[type].filter((item) =>
             item.toLowerCase().includes(value)
           );
-  
+
           if (listElement) {
             // Effacer les anciens gestionnaires d'événements
             listElement.innerHTML = "";
-  
+
             // Ajouter les nouveaux éléments avec les gestionnaires d'événements
             filteredOptions.forEach((item) => {
               const listItem = document.createElement("li");
@@ -222,12 +250,24 @@ removeSelectedItem(type, item) {
               listItem.addEventListener("click", () => {
                 this.handleFilteredSelection(type, item);
               });
-  
+
               listElement.appendChild(listItem);
             });
           }
         }
-  
+
+        // Ajouter un gestionnaire d'événements pour le cas de désélection
+        const selectedItemsContainer = document.querySelector(
+          `.selected-${type}-container ul`
+        );
+
+        if (selectedItemsContainer) {
+          selectedItemsContainer.addEventListener("click", (event) => {
+            const selectedItem = event.target.textContent.trim();
+            this.removeSelectedItem(type, selectedItem);
+          });
+        }
+
         // Ajoutez ici le code pour gérer la soumission du formulaire
         const formElement = document.querySelector(`[name="${type}"] form`);
         if (formElement) {
@@ -237,43 +277,31 @@ removeSelectedItem(type, item) {
           });
         }
       });
-    });
-  }
-  
-  // Méthode pour afficher les recettes
-  displayRecipesInfos(data) {
-    const recipeSection = document.querySelector(".recipes-cards");
 
-    if (data && data.recipes) {
-      data.recipes.forEach((recipe) => {
-        const recipeElement = document.createElement("article");
-        recipeElement.classList.add("recipe");
+      // Ajoutez un événement pour effacer le contenu de l'input et masquer la croix
+      clearInputIcon.addEventListener("click", () => {
+        input.value = "";
+        clearInputIcon.style.display = "none";
 
-        recipeElement.innerHTML = `
-          <div class="time">${recipe.time}min</div>
-          <img src="assets/photos_les_petits_plats/${
-            recipe.image
-          }" alt="recette ${recipe.id}" />
-          <h2>${recipe.name}</h2>
-          <h3>RECETTE</h3>
-          <p class="recettes">${recipe.description}</p>
-          <h3>INGREDIENTS</h3>
-          <div class="ingredients">
-            ${recipe.ingredients
-              .map(
-                (ingredient) => `
-              <p>${ingredient.ingredient}<br>
-              ${ingredient.quantity}${
-                  ingredient.unit ? ` ${formatUnit(ingredient.unit)}` : ""
-                }</p>`
-              )
-              .join("")}
-          </div>
-        `;
+        // Mettez à jour la liste lorsque la croix est cliquée et l'input est vidé
+        const type = input.getAttribute("name");
+        const listElement = document.getElementById(`${type}-list`);
+        const uniqueItemsList = uniqueItems[type];
 
-        recipeSection.appendChild(recipeElement);
+        if (listElement && uniqueItemsList) {
+          listElement.innerHTML = "";
+          uniqueItemsList.forEach((item) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = item;
+            listItem.addEventListener("click", () => {
+              this.handleFilteredSelection(type, item);
+            });
+
+            listElement.appendChild(listItem);
+          });
+        }
       });
-    }
+    });
   }
 
   // Méthode pour mettre à jour l'affichage des recettes
@@ -312,6 +340,14 @@ removeSelectedItem(type, item) {
         recipeSection.appendChild(recipeElement);
       });
     }
+    // Mettez à jour le compteur
+    const recipesCount = data.recipes.length; // Nombre actuel de recettes
+    this.updateRecipesCounter(recipesCount);
+  }
+
+  updateRecipesCounter(count) {
+    const recipesCounter = document.querySelector(".recipesCounter");
+    recipesCounter.textContent = `${count} recette${count !== 1 ? "s" : ""}`;
   }
 }
 
@@ -327,6 +363,7 @@ function formatUnit(unit) {
 }
 function manageDropdowns() {
   const dropdownButtons = document.querySelectorAll(".dropdown-button");
+
   dropdownButtons.forEach((button) => {
     const dropdownContent = document.querySelector(
       `[data-dropdown-content='${button.getAttribute("data-dropdown-target")}']`
@@ -345,4 +382,4 @@ function manageDropdowns() {
   });
 }
 
-manageDropdowns();      
+manageDropdowns();
