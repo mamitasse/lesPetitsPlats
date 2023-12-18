@@ -37,6 +37,12 @@ h1 {
   border: none;
   flex: 1;
   margin-left: 20px;
+  color: var(--Grey, #7a7a7a);
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .searchButton {
@@ -56,15 +62,13 @@ h1 {
   padding-top: 15px;
   margin-top: 10px;
   margin-right: 10px;
- 
 }
-.formHeader .fas{
+.formHeader .fas {
   font-size: 25px;
 }
 
 i {
   text-align: center;
-
 }
 section {
   display: flex;
@@ -333,7 +337,6 @@ li:hover {
 .dropdown button {
   border: none;
   background: none;
-  
 }
 .dropdown .fa-search {
   background: none;
@@ -368,15 +371,14 @@ li:hover {
   right: 0;
   padding: 6px;
 }
-.recipesCounter{
-  color: var(--Black, #1B1B1B);
-font-family: Anton;
-font-size: 21px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-margin-left: 80px;
-
+.recipesCounter {
+  color: var(--Black, #1b1b1b);
+  font-family: Anton;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 80px;
 }
 
 .selected-item {
@@ -385,12 +387,27 @@ margin-left: 80px;
   align-items: center;
   padding: 8px;
   border-radius: 10px;
-background: #FFD15B;
-margin-top: 3px;
-position: static;
-}
-.selectedItems{
+  background: #ffd15b;
+  margin-top: 3px;
   position: static;
+  border-radius: 10px;
+  background: #ffd15b;
+  display: inline-flex;
+  padding: 17px 18px;
+  align-items: center;
+  gap: 60px;
+  color: #000;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 167px;
+  height: 19px;
+}
+.selectedItems {
+  position: static;
+  margin-left: 20px;
 }
 
 .remove-button {
@@ -414,7 +431,9 @@ position: static;
 
 .selected-items-container {
   position: fixed;
-  top: calc(100% + 5px); /* Placez-le juste en dessous du dropdown avec un espace de 5px */
+  top: calc(
+    100% + 5px
+  ); /* Placez-le juste en dessous du dropdown avec un espace de 5px */
   left: 0;
   z-index: 1000; /* Assurez-vous que cela est au-dessus des autres éléments si nécessaire */
   background-color: #fff; /* Ajoutez d'autres styles selon vos préférences */
@@ -428,9 +447,28 @@ position: static;
   /* Styles pour chaque élément sélectionné */
   position: fixed;
 }
-.choix{
-  position:relative;
+.choix {
+  position: relative;
 }
-.dropdown input{
+.dropdown input {
   margin-bottom: 5px;
+}
+.selectedItems {
+  width: 120px;
+}
+.dropdown-button {
+  color: var(--Black, #1b1b1b);
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  display: inline-flex;
+  padding: 17px 16px;
+  align-items: center;
+  gap: 63px;
+  border-radius: 11px;
+  background: #fff;
+  border: nome;
+  height: 22px;
 }

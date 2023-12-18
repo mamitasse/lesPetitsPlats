@@ -36,10 +36,6 @@ class ListRecipesView {
         const selectedAppareils = this.getSelectedItems("appareils");
         const selectedUstensiles = this.getSelectedItems("ustensiles");
 
-        console.log(selectedUstensiles);
-        console.log(selectedAppareils);
-        console.log(selectedIngredients);
-
         // Filtrage des recettes en fonction des éléments sélectionnés
         // Filtrage des recettes en fonction des éléments sélectionnés
         const filteredRecipes = controller.filterRecipes(
@@ -54,10 +50,6 @@ class ListRecipesView {
         let finalFilteredRecipes;
 
         if (controller.filteredBySearch.length > 0) {
-          console.log(
-            "Controller Filtered By Search:",
-            controller.filteredBySearch
-          );
           finalFilteredRecipes = controller.filteredBySearch.filter(
             (recipeBySearch) =>
               filteredRecipes.some((recipe) => recipe.id === recipeBySearch.id)
@@ -99,13 +91,10 @@ class ListRecipesView {
 
   // Nouvelle méthode pour mettre à jour les listes déroulantes
   updateDropdowns(uniqueItems, type) {
-    console.log(uniqueItems, type);
     const listElement = document.getElementById(`${type}-list`);
     const selectedItemsContainer = document.getElementById(`selected-${type}`);
 
     if (listElement) {
-      console.log(listElement);
-      console.log(uniqueItems[type]);
       // Mise à jour des options dans la liste déroulante
       listElement.innerHTML = uniqueItems[type]
         ? uniqueItems[type].map((item) => `<li>${item}</li>`).join("")

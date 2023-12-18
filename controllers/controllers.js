@@ -71,35 +71,43 @@ class Controller {
   }
 
   // Méthode pour gérer la recherche principale
-  handleSearch(query) {
-    console.log("Query:", query);
+// Méthode pour gérer la recherche principale
+handleSearch(query) {
+  console.log("Query:", query);
 
-    const normalizedQuery = this.normalizeString(query);
-    console.log("Normalized Query:", normalizedQuery);
+  const normalizedQuery = this.normalizeString(query);
+  console.log("Normalized Query:", normalizedQuery);
 
-    // Filtrer les recettes en fonction de la requête
-    const filteredRecipes = this.filterRecipes(
+  // Filtrer les recettes en fonction de la requête
+  let filteredRecipes = this.filterRecipes(
       this.view.getSelectedItems("ingredients"),
       this.view.getSelectedItems("appareils"),
       this.view.getSelectedItems("ustensiles")
-    ).filter((recipe) => {
+  );
+  
+  filteredRecipes = this.filterByText(filteredRecipes, normalizedQuery);
+  
+  // Mettre à jour la liste des recettes filtrées par la recherche principale
+  controller.filteredBySearch = filteredRecipes;
+
+  // Mettre à jour l'affichage des recettes avec le résultat filtré
+  this.view.updateRecipesDisplay({ recipes: filteredRecipes });
+  console.log(filteredRecipes);
+
+  this.updateDropdownsBasedOnFilteredRecipes(filteredRecipes);
+}
+
+filterByText(filteredRecipes, normalizedQuery) {
+  // Utilisez le paramètre query ici au lieu de normalizedQuery
+  return filteredRecipes.filter((recipe) => {
       const normalizedRecipeData = this.normalizeRecipeData(recipe);
 
       // Recherche dans le nom, la description, les ingrédients, les ustensiles et les appareils
       return Object.values(normalizedRecipeData).some((value) =>
-        value.includes(normalizedQuery)
+          value.includes(normalizedQuery)
       );
-    });
-
-    // Mettre à jour la liste des recettes filtrées par la recherche principale
-    controller.filteredBySearch = filteredRecipes;
-
-    // Mettre à jour l'affichage des recettes avec le résultat filtré
-    this.view.updateRecipesDisplay({ recipes: filteredRecipes });
-    console.log(filteredRecipes);
-
-    this.updateDropdownsBasedOnFilteredRecipes(filteredRecipes);
-  }
+  });
+}
 
   // Méthode pour normaliser une chaîne de caractères en minuscules sans accents
   normalizeString(str) {
