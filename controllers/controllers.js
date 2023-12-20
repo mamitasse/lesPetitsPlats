@@ -97,15 +97,19 @@ handleSearch(query) {
   this.updateDropdownsBasedOnFilteredRecipes(filteredRecipes);
 }
 
-filterByText(filteredRecipes, normalizedQuery) {
-  // Utilisez le paramètre query ici au lieu de normalizedQuery
+filterByText(filteredRecipes, query) {
   return filteredRecipes.filter((recipe) => {
       const normalizedRecipeData = this.normalizeRecipeData(recipe);
 
-      // Recherche dans le nom, la description, les ingrédients, les ustensiles et les appareils
-      return Object.values(normalizedRecipeData).some((value) =>
-          value.includes(normalizedQuery)
+      // Recherche dans le nom, la description et les ingrédients
+      const nameMatches = normalizedRecipeData.name.includes(query);
+      const descriptionMatches = normalizedRecipeData.description.includes(query);
+      const ingredientsMatch = normalizedRecipeData.ingredients.some((ingredient) =>
+          ingredient.includes(query)
       );
+
+      // Retourne true si la requête correspond à une partie du nom, de la description ou des ingrédients
+      return nameMatches || descriptionMatches || ingredientsMatch;
   });
 }
 

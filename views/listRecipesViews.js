@@ -21,6 +21,15 @@ class ListRecipesView {
       ustensiles: [],
     };
 
+    this.inputHeader.addEventListener("input", (e) => {
+      const query = this.inputHeader.value;
+      if (query.length >= 3) {
+        controller.handleSearch(query);
+      }
+    });
+
+
+
     this.searchButton.addEventListener("click", (e) => {
       e.preventDefault();
       const query = this.inputHeader.value;
