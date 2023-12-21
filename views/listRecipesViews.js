@@ -144,7 +144,7 @@ class ListRecipesView {
   // Méthode pour mettre à jour les éléments sélectionnés
   updateSelectedItems(type) {
     const selectedItemsContainer = document.querySelector(
-      `.selected-${type}-container ul`
+      `.selected-container ul`
     );
 
     if (selectedItemsContainer) {
