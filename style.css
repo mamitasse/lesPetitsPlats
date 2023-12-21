@@ -12,7 +12,9 @@ header {
   margin-bottom: 20px;
 }
 body {
-  background-color: #ededed;
+  
+  background: #EDEDED;
+  
 }
 
 h1 {
@@ -84,7 +86,7 @@ section {
 .recipes-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 40px;
   width: 100%;
   margin-top: 30px;
   object-fit: cover;
@@ -181,24 +183,6 @@ h3 {
   background-color: #fff;
 }
 .dropdown-button {
-  display: inline-flex;
-  padding: 17px 16px;
-  align-items: center;
-
-  border-radius: 11px;
-  background: #fff;
-  width: 195px;
-  height: 22px;
-  padding: 16px 17px 16px 17px;
-  border: none;
-  display: flex;
-  justify-content: space-between;
-  color: var(--Black, #1b1b1b);
-  font-family: Manrope;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
 }
 .dropdown-content {
   display: inline-flex;
@@ -237,7 +221,7 @@ h3 {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  gap: 30px;
+  gap: 50px;
   margin-top: 40px;
 }
 .dropdown-content {
@@ -336,7 +320,7 @@ li:hover {
 }
 .dropdown button {
   border: none;
-  background: none;
+  background-color: #fff;
 }
 .dropdown .fa-search {
   background: none;
@@ -351,13 +335,14 @@ li:hover {
 }
 
 .inputDropdown {
-  padding-right: 35px; /* Ajoutez un espace pour les icônes à droite */
+
+  width: 100%;
 }
 
 .clear-input-icon,
 .searchChoix {
   position: absolute;
-  top: 50%;
+  top: 44%;
   transform: translateY(-50%);
   cursor: pointer;
 }
@@ -369,7 +354,7 @@ li:hover {
 
 .searchChoix {
   right: 0;
-  padding: 6px;
+  padding: 0px;
 }
 .recipesCounter {
   color: var(--Black, #1b1b1b);
@@ -378,7 +363,7 @@ li:hover {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-left: 80px;
+  margin-left: 180px;
 }
 
 .selected-item {
@@ -427,6 +412,7 @@ li:hover {
 .dropdown {
   position: relative;
   /* Vos styles pour le dropdown */
+  width: 160px;
 }
 
 .selected-items-container {
@@ -471,4 +457,16 @@ li:hover {
   background: #fff;
   border: nome;
   height: 22px;
+  width: 120%;
+ 
+}
+.selected-container ul{
+  display: flex;
+  flex-direction: row;
+  gap: 20px
+  ;
+}
+.choix{
+  margin-bottom: 20px;
+  justify-content: space-around;
 }
