@@ -12,9 +12,7 @@ header {
   margin-bottom: 20px;
 }
 body {
-  
-  background: #EDEDED;
-  
+  background: #ededed;
 }
 
 h1 {
@@ -27,6 +25,7 @@ h1 {
   line-height: normal;
 }
 .formHeader {
+  position: relative;
   width: 80%;
   display: flex;
   height: 72px;
@@ -182,8 +181,7 @@ h3 {
   padding: 0%;
   background-color: #fff;
 }
-.dropdown-button {
-}
+
 .dropdown-content {
   display: inline-flex;
   padding: 17px 18px;
@@ -212,7 +210,7 @@ h3 {
 }
 .chevron {
   font-size: 12px;
-  margin-left: 4px;
+  margin-left: 24px;
   transition: transform 0.2s ease;
 }
 
@@ -263,6 +261,9 @@ h3 {
   font-weight: 400;
   line-height: normal;
   list-style-type: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding: 2px;
 }
 .dropdown {
   display: inline-flex;
@@ -278,15 +279,13 @@ h3 {
   z-index: 1; /* Ajoutez cette ligne pour s'assurer que le dropdown est affiché au-dessus du contenu */
   background-color: #fff;
   width: 159px;
+  border-radius: 11px;
 
-  margin-top: 25px;
+  margin-top: 38px;
 }
 
 li:hover {
-  color: red;
-}
-.selected {
-  background-color: red;
+  background-color: #ffd15b;
 }
 
 .selected-ingredients-container ul li {
@@ -335,7 +334,6 @@ li:hover {
 }
 
 .inputDropdown {
-
   width: 100%;
 }
 
@@ -390,10 +388,6 @@ li:hover {
   width: 167px;
   height: 19px;
 }
-.selectedItems {
-  position: static;
-  margin-left: 20px;
-}
 
 .remove-button {
   background: none;
@@ -413,26 +407,12 @@ li:hover {
   position: relative;
   /* Vos styles pour le dropdown */
   width: 160px;
+  border-radius: 11px;
 }
 
-.selected-items-container {
-  position: fixed;
-  top: calc(
-    100% + 5px
-  ); /* Placez-le juste en dessous du dropdown avec un espace de 5px */
-  left: 0;
-  z-index: 1000; /* Assurez-vous que cela est au-dessus des autres éléments si nécessaire */
-  background-color: #fff; /* Ajoutez d'autres styles selon vos préférences */
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  display: block;
-}
 
-.selected-ustensil-container {
-  display: block;
-  /* Styles pour chaque élément sélectionné */
-  position: fixed;
-}
+
+
 .choix {
   position: relative;
 }
@@ -453,20 +433,184 @@ li:hover {
   padding: 17px 16px;
   align-items: center;
   gap: 63px;
-  border-radius: 11px;
+
   background: #fff;
   border: nome;
-  height: 22px;
+
   width: 120%;
- 
+  display: inline-flex;
+  padding: 17px 16px;
+  align-items: center;
+  border-radius: 11px;
+  border: none;
+  outline: none; 
 }
-.selected-container ul{
+.selected-container ul {
   display: flex;
   flex-direction: row;
-  gap: 20px
-  ;
+  gap: 20px;
 }
-.choix{
+.choix {
   margin-bottom: 20px;
   justify-content: space-around;
+}
+#clear-main-input-icon{
+font-size: 14px;
+color: #000;
+margin: 25px;
+}
+.selected-item{
+  width: 195px;
+}
+.container_selected{
+  display: flex;
+  justify-content: baseline;
+  flex-direction: row;
+  width: 100%;
+}
+.container_selected ul{
+  display: flex;
+  justify-content: baseline;
+  flex-direction: row;
+}
+.container_selected ul li{
+  margin-left: 15px;
+  margin-right: 15px;
+  
+}
+.selected-items-container ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.selected-items-container ul li {
+  background-color: #ffd15b;
+  color: black;
+  border-radius: 10px;
+  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.selected-ingredients-container ul li,
+.selected-appareils-container ul li,
+.selected-ustensiles-container ul li {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.selected-item {
+ 
+  }
+
+
+.container_selected ul {
+  display: flex;
+  justify-content: baseline;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.container_selected ul li {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.choix {
+  margin-bottom: 20px;
+  justify-content: space-around;
+}
+
+#clear-main-input-icon {
+  font-size: 14px;
+  color: #000;
+  margin: 25px;
+  position: absolute;
+  right: 52px;
+}
+
+.selected-items-container ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.selected-items-container ul li {
+  background-color: #ffd15b;
+  color: black;
+  border-radius: 10px;
+  padding: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.selected-ingredients-container ul li,
+.selected-appareils-container ul li,
+.selected-ustensiles-container ul li {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.selected-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-radius: 10px;
+  background: #ffd15b;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-right: 5px;
+  position: static;
+ width: 190px;
+}
+.container_selected {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 20px;
+
+}
+.container_selected ul {
+  display: flex;
+  justify-content:flex-start;
+  flex-direction: row;
+
+  
+
+
+
+.choix {
+  margin-bottom: 20px;
+  justify-content: space-around;
+}
+
+#clear-main-input-icon {
+  font-size: 14px;
+  color: #000;
+  margin: 25px;
+}
+
+
+.container_selected {
+  display: flex;
+  flex-direction: column;
+
+  flex-wrap: wrap; 
+}
+
+.container_selected ul {
+  display: flex;
+  justify-content: baseline;
+  flex-direction: row;
+  flex-wrap: wrap; /* Ajoutez cette ligne pour permettre le passage à la ligne */
 }

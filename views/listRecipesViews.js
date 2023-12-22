@@ -2,6 +2,7 @@ class ListRecipesView {
   constructor() {
     // Sélection des éléments du DOM
     this.inputHeader = document.querySelector(".inputHeader");
+    this.clearMainInputIcon = document.getElementById("clear-main-input-icon");
     this.searchButton = document.querySelector(".searchButton");
     this.searchButtonDropdowns = document.querySelectorAll(".searchChoix");
 
@@ -20,7 +21,6 @@ class ListRecipesView {
       appareils: [],
       ustensiles: [],
     };
-
     this.inputHeader.addEventListener("input", (e) => {
       const query = this.inputHeader.value;
       if (query.length >= 3) {
@@ -28,7 +28,27 @@ class ListRecipesView {
       }
     });
 
+    // Ajout d'un gestionnaire d'événements pour masquer/afficher l'icône en fonction du contenu de l'input
+    this.inputHeader.addEventListener("input", () => {
+      const inputValue = this.inputHeader.value.trim();
+      if (inputValue === "") {
+        this.clearMainInputIcon.style.display = "none";
+      } else {
+        this.clearMainInputIcon.style.display = "block";
+      }
+    });
 
+    // Ajout d'un gestionnaire d'événements pour effacer le contenu de l'input principal
+    this.clearMainInputIcon.addEventListener("click", () => {
+      this.inputHeader.value = "";
+      this.clearMainInputIcon.style.display = "none";
+      // Déclencher une nouvelle recherche avec une chaîne vide
+      controller.handleSearch("");
+    });
+    // Ajout d'un gestionnaire d'événements pour masquer l'icône lors du chargement de la page
+    document.addEventListener("DOMContentLoaded", () => {
+      this.clearMainInputIcon.style.display = "none";
+    });
 
     this.searchButton.addEventListener("click", (e) => {
       e.preventDefault();
@@ -45,6 +65,10 @@ class ListRecipesView {
         const selectedAppareils = this.getSelectedItems("appareils");
         const selectedUstensiles = this.getSelectedItems("ustensiles");
 
+        console.log(selectedUstensiles);
+        console.log(selectedAppareils);
+        console.log(selectedIngredients);
+
         // Filtrage des recettes en fonction des éléments sélectionnés
         // Filtrage des recettes en fonction des éléments sélectionnés
         const filteredRecipes = controller.filterRecipes(
@@ -59,6 +83,10 @@ class ListRecipesView {
         let finalFilteredRecipes;
 
         if (controller.filteredBySearch.length > 0) {
+          console.log(
+            "Controller Filtered By Search:",
+            controller.filteredBySearch
+          );
           finalFilteredRecipes = controller.filteredBySearch.filter(
             (recipeBySearch) =>
               filteredRecipes.some((recipe) => recipe.id === recipeBySearch.id)
@@ -100,10 +128,13 @@ class ListRecipesView {
 
   // Nouvelle méthode pour mettre à jour les listes déroulantes
   updateDropdowns(uniqueItems, type) {
+    console.log(uniqueItems, type);
     const listElement = document.getElementById(`${type}-list`);
     const selectedItemsContainer = document.getElementById(`selected-${type}`);
 
     if (listElement) {
+      console.log(listElement);
+      console.log(uniqueItems[type]);
       // Mise à jour des options dans la liste déroulante
       listElement.innerHTML = uniqueItems[type]
         ? uniqueItems[type].map((item) => `<li>${item}</li>`).join("")
@@ -144,7 +175,7 @@ class ListRecipesView {
   // Méthode pour mettre à jour les éléments sélectionnés
   updateSelectedItems(type) {
     const selectedItemsContainer = document.querySelector(
-      `.selected-container ul`
+      `.selected-${type}-container ul`
     );
 
     if (selectedItemsContainer) {
