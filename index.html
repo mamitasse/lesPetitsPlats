@@ -23,6 +23,7 @@
       </h1>
       <form class="formHeader"  method="GET">
         <input class="inputHeader" type="text" name="q" placeholder="Rechercher une recette, un ingrédient, ..." />
+        <div id="clear-main-input-icon" class="clear-input-icon">&#10006;</div>
         <button title="lancer la recherche" class="searchButton" type="submit" >
           <i class="fas fa-search faHeader"></i> <!-- Icône de loupe de Font Awesome -->
         </button>
@@ -97,10 +98,19 @@
             <div class="recipesCounter"></div>
         </section>
       
-        <div class="selected-container selectedItems">
-           git
-            <ul></ul>
-        </div> 
+        <div class="container_selected">
+            <div class="selected-ingredients-container selectedItems ">
+                <ul></ul>
+               
+            </div> 
+            <div class="selected-appareils-container selectedItems ">
+                <ul></ul>
+                
+            </div>
+            <div class="selected-ustensiles-container selectedItems ">
+                <ul></ul>
+            </div>
+        </div>
       
 
        
