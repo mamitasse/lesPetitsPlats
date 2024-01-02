@@ -34,18 +34,6 @@ h1 {
   margin-left: 50px;
 }
 
-.inputHeader {
-  border: none;
-  flex: 1;
-  margin-left: 20px;
-  color: var(--Grey, #7a7a7a);
-  font-family: Manrope;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
 .searchButton {
   background: none;
   border: none;
@@ -408,10 +396,13 @@ li:hover {
   /* Vos styles pour le dropdown */
   width: 160px;
   border-radius: 11px;
+  color: var(--Black, #1b1b1b);
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
-
-
-
 
 .choix {
   position: relative;
@@ -443,82 +434,26 @@ li:hover {
   align-items: center;
   border-radius: 11px;
   border: none;
-  outline: none; 
+  outline: none;
+  color: var(--Black, #1b1b1b);
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
-.selected-container ul {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
+
 .choix {
   margin-bottom: 20px;
   justify-content: space-around;
 }
-#clear-main-input-icon{
-font-size: 14px;
-color: #000;
-margin: 25px;
+#clear-main-input-icon {
+  font-size: 14px;
+  color: #000;
+  margin: 25px;
 }
-.selected-item{
-  width: 195px;
-}
-.container_selected{
-  display: flex;
-  justify-content: baseline;
-  flex-direction: row;
-  width: 100%;
-}
-.container_selected ul{
-  display: flex;
-  justify-content: baseline;
-  flex-direction: row;
-}
-.container_selected ul li{
-  margin-left: 15px;
-  margin-right: 15px;
-  
-}
-.selected-items-container ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.selected-items-container ul li {
-  background-color: #ffd15b;
-  color: black;
-  border-radius: 10px;
-  padding: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.selected-ingredients-container ul li,
-.selected-appareils-container ul li,
-.selected-ustensiles-container ul li {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
 .selected-item {
- 
-  }
-
-
-.container_selected ul {
-  display: flex;
-  justify-content: baseline;
-  flex-direction: row;
-  gap: 20px;
-}
-
-.container_selected ul li {
-  margin-left: 15px;
-  margin-right: 15px;
+  width: 195px;
 }
 
 .choix {
@@ -534,51 +469,25 @@ margin: 25px;
   right: 52px;
 }
 
-.selected-items-container ul {
+.selected-item {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.selected-items-container ul li {
-  background-color: #ffd15b;
-  color: black;
-  border-radius: 10px;
-  padding: 8px;
-  display: inline-flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 5px;
+  padding: 8px;
+  border-radius: 10px;
+  background: #ffd15b;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  margin-right: 5px;
+  position: static;
   width: 190px;
+  color: #000;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
-
-.selected-ingredients-container ul li,
-.selected-appareils-container ul li,
-.selected-ustensiles-container ul li {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.selectedItems {
-width: 195px;
-}
-.container_selected {
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
-  gap: 20px;
-
-}
-.container_selected ul {
-  display: flex;
-  justify-content:flex-start;
-  flex-direction: row;
-
-}
-
-
 
 .choix {
   margin-bottom: 20px;
@@ -591,20 +500,58 @@ width: 195px;
   margin: 25px;
 }
 
-.container_selected {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  margin-left: 30px;
-}
-
-
 .container_selected ul {
   display: flex;
-  justify-content: baseline;
+  justify-content: left;
   flex-direction: row;
-  flex-wrap: wrap; /* Ajoutez cette ligne pour permettre le passage à la ligne */
+
+  gap: 20px;
 }
-.container_selected ul li{
-  width: 200px;
+.container_selected ul li {
+  margin: 5px;
+  width: 100%;
+  display: inline-flex;
+  padding: 17px 18px;
+  align-items: center;
+  gap: 60px;
+  border-radius: 10px;
+  background: #ffd15b;
+  color: #000;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 170px;
+}
+.inputHeader {
+  border: none;
+  flex: 1;
+  margin-left: 20px;
+  color: var(--Grey, #7a7a7a);
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  white-space: nowrap;
+  width: 170px;
+}
+.recipesCounter {
+  color: var(--Black, #1b1b1b);
+  font-family: Anton;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.selectedItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+.selected-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }

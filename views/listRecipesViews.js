@@ -65,11 +65,6 @@ class ListRecipesView {
         const selectedAppareils = this.getSelectedItems("appareils");
         const selectedUstensiles = this.getSelectedItems("ustensiles");
 
-        console.log(selectedUstensiles);
-        console.log(selectedAppareils);
-        console.log(selectedIngredients);
-
-        // Filtrage des recettes en fonction des éléments sélectionnés
         // Filtrage des recettes en fonction des éléments sélectionnés
         const filteredRecipes = controller.filterRecipes(
           selectedIngredients,
@@ -77,16 +72,10 @@ class ListRecipesView {
           selectedUstensiles
         );
 
-        console.log("Filtered Recipes:", filteredRecipes);
-
         // Si des filtres de recherche sont appliqués, effectuez l'intersection
         let finalFilteredRecipes;
 
         if (controller.filteredBySearch.length > 0) {
-          console.log(
-            "Controller Filtered By Search:",
-            controller.filteredBySearch
-          );
           finalFilteredRecipes = controller.filteredBySearch.filter(
             (recipeBySearch) =>
               filteredRecipes.some((recipe) => recipe.id === recipeBySearch.id)
@@ -111,19 +100,11 @@ class ListRecipesView {
     recipesCounter.textContent = `${count} recette${count !== 1 ? "s" : ""}`;
   }
 
-  handleFilteredSelection(type, selectedItem) {
-    // Ajoutez l'élément à la liste des éléments sélectionnés pour le type spécifié
-    this.selectedItems[type].push(selectedItem);
-
-    // Mettez à jour l'affichage des éléments sélectionnés
-    updateSelectedItems(type);
-  }
-
   // Méthode pour obtenir les éléments sélectionnés d'un type donné
   getSelectedItems(type) {
-    return Array.from(
-      document.querySelectorAll(`.selected-${type}-container span`)
-    ).map((item) => item.textContent.trim());
+    return Array.from(document.querySelectorAll(`.${type} span`)).map((item) =>
+      item.textContent.trim()
+    );
   }
 
   // Nouvelle méthode pour mettre à jour les listes déroulantes
@@ -155,9 +136,14 @@ class ListRecipesView {
           if (originalIndex !== -1) {
             uniqueItems[type].splice(originalIndex, 1);
           }
-
-          // Mise à jour de la liste des éléments sélectionnés
+          // Mise à jour de l'affichage des éléments sélectionnés
           this.updateSelectedItems(type);
+
+          // Mise à jour de la liste déroulante après la suppression d'un élément
+          this.updateDropdowns(uniqueItems, type);
+
+          // Appel de la méthode du contrôleur pour gérer le filtrage supplémentaire
+          controller.handleAdditionalFiltering(); // Assurez-vous que "controller" est bien défini
         }
       });
     });
@@ -172,40 +158,48 @@ class ListRecipesView {
     }
   }
 
-  // Méthode pour mettre à jour les éléments sélectionnés
-  updateSelectedItems(type) {
+  updateSelectedItems() {
     const selectedItemsContainer = document.querySelector(
-      `.selected-${type}-container ul`
+      ".selected-container"
     );
 
     if (selectedItemsContainer) {
       // Effacement du contenu précédent
       selectedItemsContainer.innerHTML = "";
 
-      // Ajout des éléments sélectionnés à la liste affichée
-      this.selectedItems[type].forEach((item) => {
-        const selectedItem = document.createElement("li");
-        selectedItem.classList.add("selected-item");
+      // Création d'une nouvelle liste pour chaque type d'élément sélectionné
+      Object.keys(this.selectedItems).forEach((type) => {
+        const selectedItemsList = document.createElement("ul");
 
-        // Ajout d'un span pour le texte de l'élément sélectionné
-        const itemText = document.createElement("span");
-        itemText.textContent = item;
+        // Ajout des éléments sélectionnés à la liste
+        this.selectedItems[type].forEach((item) => {
+          const selectedItem = document.createElement("li");
+          selectedItem.classList.add("selected-item");
+          selectedItem.classList.add(type);
 
-        // Ajout d'un bouton de suppression à chaque élément
-        const removeButton = document.createElement("button");
-        removeButton.classList.add("remove-button");
-        removeButton.innerHTML = "&times;";
-        removeButton.addEventListener("click", () => {
-          // Gestion du clic sur le bouton de suppression
-          this.removeSelectedItem(type, item);
+          // Ajout d'un span pour le texte de l'élément sélectionné
+          const itemText = document.createElement("span");
+          itemText.textContent = item;
+
+          // Ajout d'un bouton de suppression à chaque élément
+          const removeButton = document.createElement("button");
+          removeButton.classList.add("remove-button");
+          removeButton.innerHTML = "&times;";
+          removeButton.addEventListener("click", () => {
+            // Gestion du clic sur le bouton de suppression
+            this.removeSelectedItem(type, item);
+          });
+
+          // Ajout du texte et du bouton à l'élément sélectionné
+          selectedItem.appendChild(itemText);
+          selectedItem.appendChild(removeButton);
+
+          // Ajout de l'élément à la liste
+          selectedItemsList.appendChild(selectedItem);
         });
 
-        // Ajout du texte et du bouton à l'élément sélectionné
-        selectedItem.appendChild(itemText);
-        selectedItem.appendChild(removeButton);
-
-        // Ajout de l'élément à la liste affichée
-        selectedItemsContainer.appendChild(selectedItem);
+        // Ajout de la liste au conteneur global
+        selectedItemsContainer.appendChild(selectedItemsList);
       });
     }
   }
@@ -214,8 +208,14 @@ class ListRecipesView {
     // Ajoutez l'élément à la liste des éléments sélectionnés pour le type spécifié
     this.selectedItems[type].push(selectedItem);
 
-    // Mettez à jour l'affichage des éléments sélectionnés
+    // Mise à jour de l'affichage des éléments sélectionnés
     this.updateSelectedItems(type);
+
+    // Mise à jour de la liste déroulante après la suppression d'un élément
+    this.updateDropdowns(uniqueItems, type);
+
+    // Appel de la méthode du contrôleur pour gérer le filtrage supplémentaire
+    controller.handleAdditionalFiltering(); // Assurez-vous que "controller" est bien défini
   }
 
   // Méthode pour supprimer un élément sélectionné
@@ -287,7 +287,7 @@ class ListRecipesView {
 
         // Ajouter un gestionnaire d'événements pour le cas de désélection
         const selectedItemsContainer = document.querySelector(
-          `.selected-${type}-container ul`
+          `.selected-container ul`
         );
 
         if (selectedItemsContainer) {
