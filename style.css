@@ -34,18 +34,6 @@ h1 {
   margin-left: 50px;
 }
 
-.inputHeader {
-  border: none;
-  flex: 1;
-  margin-left: 20px;
-  color: var(--Grey, #7a7a7a);
-  font-family: Manrope;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-
 .searchButton {
   background: none;
   border: none;
@@ -468,16 +456,6 @@ li:hover {
   width: 195px;
 }
 
-
-
-
-
-
-
-
-
-
-
 .choix {
   margin-bottom: 20px;
   justify-content: space-around;
@@ -491,11 +469,6 @@ li:hover {
   right: 52px;
 }
 
-
-
-
-
-
 .selected-item {
   display: flex;
   justify-content: space-between;
@@ -508,8 +481,13 @@ li:hover {
   margin-right: 5px;
   position: static;
   width: 190px;
+  color: #000;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
-
 
 .choix {
   margin-bottom: 20px;
@@ -522,23 +500,58 @@ li:hover {
   margin: 25px;
 }
 
-.container_selected {
-  display: flex;
-  flex-direction: row;
-gap: 70px;
-flex-wrap: wrap;
-width: 100%;
-}
-
 .container_selected ul {
   display: flex;
-  justify-content: baseline;
+  justify-content: left;
   flex-direction: row;
-  flex-wrap: wrap; 
+
   gap: 20px;
-  width: 170px;
 }
 .container_selected ul li {
   margin: 5px;
-  width:100%;
+  width: 100%;
+  display: inline-flex;
+  padding: 17px 18px;
+  align-items: center;
+  gap: 60px;
+  border-radius: 10px;
+  background: #ffd15b;
+  color: #000;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 170px;
+}
+.inputHeader {
+  border: none;
+  flex: 1;
+  margin-left: 20px;
+  color: var(--Grey, #7a7a7a);
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  white-space: nowrap;
+  width: 170px;
+}
+.recipesCounter {
+  color: var(--Black, #1b1b1b);
+  font-family: Anton;
+  font-size: 21px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.selectedItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}
+.selected-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
