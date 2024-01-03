@@ -51,9 +51,7 @@ class Model {
     };
   }
   normalizeItem(item) {
-    return item
-      .toLowerCase()
-
-      .replace(/à (\S)/g, (match, p1) => `à ${p1.toUpperCase()}`); // Met la première lettre après "à" en majuscule
+    return item.replace(/\b\w/g, (match) => match.toUpperCase());
   }
+  
 }

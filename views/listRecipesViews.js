@@ -118,7 +118,9 @@ class ListRecipesView {
       console.log(uniqueItems[type]);
       // Mise à jour des options dans la liste déroulante
       listElement.innerHTML = uniqueItems[type]
-        ? uniqueItems[type].map((item) => `<li>${item}</li>`).join("")
+        ? uniqueItems[type]
+            .map((item) => `<li>${this.normalizeItem(item)}</li>`)
+            .join("")
         : "";
     }
 
@@ -156,6 +158,10 @@ class ListRecipesView {
         this.handleFormSubmission(type);
       });
     }
+  }
+
+  normalizeItem(item) {
+    return item.replace(/\b\w/g, (match) => match.toUpperCase());
   }
 
   updateSelectedItems() {
