@@ -284,10 +284,12 @@ class ListRecipesView {
               listItem.textContent = item;
               listItem.addEventListener("click", () => {
                 this.handleFilteredSelection(type, item);
+                
               });
 
               listElement.appendChild(listItem);
             });
+            
           }
         }
 

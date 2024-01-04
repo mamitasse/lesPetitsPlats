@@ -97,15 +97,21 @@ handleSearch(query) {
   this.updateDropdownsBasedOnFilteredRecipes(filteredRecipes);
 }
 
-filterByText(filteredRecipes, normalizedQuery) {
-  // Utilisez le paramètre query ici au lieu de normalizedQuery
-  return filteredRecipes.filter((recipe) => {
-      const normalizedRecipeData = this.normalizeRecipeData(recipe);
+ // Méthode de recherche dans le nom, la description et les ingrédients
+ filterByText(filteredRecipes, query) {
+  const normalizedQuery = this.normalizeString(query);
 
-      // Recherche dans le nom, la description, les ingrédients, les ustensiles et les appareils
-      return Object.values(normalizedRecipeData).some((value) =>
-          value.includes(normalizedQuery)
-      );
+  return filteredRecipes.filter((recipe) => {
+    const normalizedRecipeData = this.normalizeRecipeData(recipe);
+
+    // Recherche dans le nom, la description et les ingrédients seulement
+    return (
+      normalizedRecipeData.name.includes(normalizedQuery) ||
+      normalizedRecipeData.description.includes(normalizedQuery) ||
+      normalizedRecipeData.ingredients.some((ingredient) =>
+        ingredient.includes(normalizedQuery)
+      )
+    );
   });
 }
 
