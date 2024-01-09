@@ -9,10 +9,14 @@ header {
   flex-direction: column;
   background-image: url("assets/backgroundPetitsPlats.png");
   object-fit: cover;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 body {
   background: #ededed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
@@ -207,8 +211,8 @@ h3 {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  gap: 50px;
-  margin-top: 40px;
+  gap: 100px;
+  margin-top: 20px;
 }
 .dropdown-content {
   display: none;
@@ -426,9 +430,8 @@ li:hover {
   gap: 63px;
 
   background: #fff;
+  border: nome;
 
-
-  width: 120%;
   display: inline-flex;
   padding: 17px 16px;
   align-items: center;

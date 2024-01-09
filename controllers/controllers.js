@@ -57,7 +57,6 @@ class Controller {
 
     // Mettre à jour l'affichage des recettes avec le résultat filtré
     this.view.updateRecipesDisplay({ recipes: filteredRecipes });
-    console.log(filteredRecipes);
 
     this.updateDropdownsBasedOnFilteredRecipes(filteredRecipes);
 
@@ -71,49 +70,54 @@ class Controller {
   }
 
   // Méthode pour gérer la recherche principale
-// Méthode pour gérer la recherche principale
-handleSearch(query) {
-  console.log("Query:", query);
+  handleSearch(query) {
+    const normalizedQuery = this.normalizeString(query);
+    console.log("Normalized Query:", normalizedQuery);
 
-  const normalizedQuery = this.normalizeString(query);
-  console.log("Normalized Query:", normalizedQuery);
-
-  // Filtrer les recettes en fonction de la requête
-  let filteredRecipes = this.filterRecipes(
+    // Filtrer les recettes en fonction de la requête
+    let filteredRecipes = this.filterRecipes(
       this.view.getSelectedItems("ingredients"),
       this.view.getSelectedItems("appareils"),
       this.view.getSelectedItems("ustensiles")
-  );
-  
-  filteredRecipes = this.filterByText(filteredRecipes, normalizedQuery);
-  
-  // Mettre à jour la liste des recettes filtrées par la recherche principale
-  controller.filteredBySearch = filteredRecipes;
-
-  // Mettre à jour l'affichage des recettes avec le résultat filtré
-  this.view.updateRecipesDisplay({ recipes: filteredRecipes });
-  console.log(filteredRecipes);
-
-  this.updateDropdownsBasedOnFilteredRecipes(filteredRecipes);
-}
-
- // Méthode de recherche dans le nom, la description et les ingrédients
- filterByText(filteredRecipes, query) {
-  const normalizedQuery = this.normalizeString(query);
-
-  return filteredRecipes.filter((recipe) => {
-    const normalizedRecipeData = this.normalizeRecipeData(recipe);
-
-    // Recherche dans le nom, la description et les ingrédients seulement
-    return (
-      normalizedRecipeData.name.includes(normalizedQuery) ||
-      normalizedRecipeData.description.includes(normalizedQuery) ||
-      normalizedRecipeData.ingredients.some((ingredient) =>
-        ingredient.includes(normalizedQuery)
-      )
     );
-  });
-}
+
+    filteredRecipes = this.filterByText(filteredRecipes, normalizedQuery);
+
+    // Mettre à jour la liste des recettes filtrées par la recherche principale
+    controller.filteredBySearch = filteredRecipes;
+
+    // Mettre à jour l'affichage des recettes avec le résultat filtré
+    this.view.updateRecipesDisplay({ recipes: filteredRecipes });
+    console.log(filteredRecipes);
+
+    this.updateDropdownsBasedOnFilteredRecipes(filteredRecipes);
+  }
+
+  filterByText(filteredRecipes, query) {
+    // Utilisez le paramètre query ici au lieu de normalizedQuery
+    return filteredRecipes.filter((recipe) => {
+      const normalizedRecipeData = this.normalizeRecipeData(recipe);
+
+      // Recherche dans le nom, la description et les ingrédients
+      const searchableText = (
+        normalizedRecipeData.name +
+        normalizedRecipeData.description +
+        normalizedRecipeData.ingredients
+          .map((ingredient) => ingredient.ingredient)
+          .join(" ")
+      )
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+
+      return searchableText.includes(
+        query
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+      );
+    });
+  }
 
   // Méthode pour normaliser une chaîne de caractères en minuscules sans accents
   normalizeString(str) {
@@ -165,10 +169,8 @@ handleSearch(query) {
   }
 
   updateDropdownsBasedOnFilteredRecipes(allRecipes) {
-    console.log("updateDropdownsBasedOnFilteredRecipes() ");
     // Utiliser les recettes filtrées au lieu de toutes les recettes
     // const allRecipes = this.filteredBySearch || [];
-    console.log(allRecipes);
     let uniqueItems = {};
     // Extraire les ingrédients, appareils et ustensiles des recettes filtrées
     uniqueItems["ingredients"] = Array.from(
@@ -192,7 +194,6 @@ handleSearch(query) {
         )
       )
     );
-    console.log(uniqueItems);
     this.view.updateDropdowns(uniqueItems, "ingredients");
     this.view.updateDropdowns(uniqueItems, "appareils");
     this.view.updateDropdowns(uniqueItems, "ustensiles");
