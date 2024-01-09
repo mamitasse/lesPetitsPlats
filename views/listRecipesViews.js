@@ -109,13 +109,10 @@ class ListRecipesView {
 
   // Nouvelle méthode pour mettre à jour les listes déroulantes
   updateDropdowns(uniqueItems, type) {
-    console.log(uniqueItems, type);
     const listElement = document.getElementById(`${type}-list`);
     const selectedItemsContainer = document.getElementById(`selected-${type}`);
 
     if (listElement) {
-      console.log(listElement);
-      console.log(uniqueItems[type]);
       // Mise à jour des options dans la liste déroulante
       listElement.innerHTML = uniqueItems[type]
         ? uniqueItems[type]
@@ -346,7 +343,6 @@ class ListRecipesView {
 
     if (data && Array.isArray(data.recipes)) {
       data.recipes.forEach((recipe) => {
-        console.log("Recipe:", recipe);
         const recipeElement = document.createElement("article");
         recipeElement.classList.add("recipe");
 
