@@ -507,8 +507,6 @@ li:hover {
   display: flex;
   justify-content: left;
   flex-direction: row;
-
-  gap: 20px;
 }
 .container_selected ul li {
   margin: 5px;
