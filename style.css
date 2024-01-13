@@ -182,10 +182,10 @@ h3 {
 
   background-color: #fff;
 
-  width: 164px;
+  
 }
 .inputDropdown {
-  width: 120px;
+
   margin: 0%;
 }
 .seachChoix {
@@ -202,18 +202,12 @@ h3 {
 }
 .chevron {
   font-size: 12px;
-  margin-left: 24px;
+  margin-left: -30px;
+
   transition: transform 0.2s ease;
 }
 
-.choix {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  gap: 100px;
-  margin-top: 20px;
-}
+
 .dropdown-content {
   display: none;
 }
@@ -262,7 +256,8 @@ h3 {
   flex-direction: column;
   align-items: baseline;
   justify-content: flex-start;
-  position: relative; /* Ajoutez cette ligne pour que le dropdown soit relatif à son conteneur */
+  position: relative;
+  width: 195px; /* Ajoutez cette ligne pour que le dropdown soit relatif à son conteneur */
 }
 
 .dropdown-content {
@@ -270,9 +265,8 @@ h3 {
   position: absolute; /* Ajoutez cette ligne pour que le dropdown soit en position absolue */
   z-index: 1; /* Ajoutez cette ligne pour s'assurer que le dropdown est affiché au-dessus du contenu */
   background-color: #fff;
-  width: 159px;
+  max-width: 100%;
   border-radius: 11px;
-
   margin-top: 38px;
 }
 
@@ -305,7 +299,6 @@ li:hover {
 }
 .dropdown .fas {
   font-weight: 600;
-
   font-size: 15px;
   margin-top: 0%;
 }
@@ -315,9 +308,6 @@ li:hover {
 }
 .dropdown .fa-search {
   background: none;
-}
-.choix {
-  position: relative;
 }
 
 .formDrop {
@@ -391,14 +381,11 @@ li:hover {
 .remove-button:hover {
   color: red; /* Couleur au survol, ajustez selon vos préférences */
 }
-.choix {
-  position: relative;
-}
 
 .dropdown {
   position: relative;
   /* Vos styles pour le dropdown */
-  width: 160px;
+ width: 195px;
   border-radius: 11px;
   color: var(--Black, #1b1b1b);
   font-family: Manrope;
@@ -408,9 +395,6 @@ li:hover {
   line-height: normal;
 }
 
-.choix {
-  position: relative;
-}
 .dropdown input {
   margin-bottom: 5px;
 }
@@ -427,29 +411,18 @@ li:hover {
   display: inline-flex;
   padding: 17px 16px;
   align-items: center;
-  gap: 63px;
-
+  gap: 112px;
   background: #fff;
   border: nome;
-
-  display: inline-flex;
-  padding: 17px 16px;
-  align-items: center;
   border-radius: 11px;
   border: none;
   outline: none;
-  color: var(--Black, #1b1b1b);
-  font-family: Manrope;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-}
-
-.choix {
-  margin-bottom: 20px;
+  width: 195px;
+  display: flex;
+  align-items: baseline;
+  flex-direction: row;
   justify-content: space-around;
-}
+}                                     
 #clear-main-input-icon {
   font-size: 14px;
   color: #000;
@@ -457,11 +430,6 @@ li:hover {
 }
 .selected-item {
   width: 195px;
-}
-
-.choix {
-  margin-bottom: 20px;
-  justify-content: space-around;
 }
 
 #clear-main-input-icon {
@@ -493,6 +461,12 @@ li:hover {
 }
 
 .choix {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 100px;
+  margin-top: 20px;
+  position: relative;
   margin-bottom: 20px;
   justify-content: space-around;
 }
