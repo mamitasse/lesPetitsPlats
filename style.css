@@ -181,11 +181,8 @@ h3 {
   gap: 60px;
 
   background-color: #fff;
-
-  
 }
 .inputDropdown {
-
   margin: 0%;
 }
 .seachChoix {
@@ -206,7 +203,6 @@ h3 {
 
   transition: transform 0.2s ease;
 }
-
 
 .dropdown-content {
   display: none;
@@ -262,7 +258,7 @@ h3 {
 
 .dropdown-content {
   display: none;
-  position: absolute; /* Ajoutez cette ligne pour que le dropdown soit en position absolue */
+  position: absolute; 
   z-index: 1; /* Ajoutez cette ligne pour s'assurer que le dropdown est affiché au-dessus du contenu */
   background-color: #fff;
   max-width: 100%;
@@ -385,7 +381,7 @@ li:hover {
 .dropdown {
   position: relative;
   /* Vos styles pour le dropdown */
- width: 195px;
+  width: 195px;
   border-radius: 11px;
   color: var(--Black, #1b1b1b);
   font-family: Manrope;
@@ -422,7 +418,7 @@ li:hover {
   align-items: baseline;
   flex-direction: row;
   justify-content: space-around;
-}                                     
+}
 #clear-main-input-icon {
   font-size: 14px;
   color: #000;
